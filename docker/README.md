@@ -13,7 +13,7 @@ All images are available at https://hub.docker.com/r/tinode/
 
 	1. **RethinkDB**: If you've decided to use RethinkDB backend, run the official RethinkDB Docker container:
 	```
-	$ docker run --name rethinkdb --network tinode-net --restart always -d rethinkdb:2.3
+	$ docker run -p 8080:8080 --name rethinkdb --network tinode-net --restart always -d rethinkdb:2.3
 	```
 	See [instructions](https://hub.docker.com/_/rethinkdb/) for more options.
 
@@ -40,17 +40,17 @@ All images are available at https://hub.docker.com/r/tinode/
 
 	1. **RethinkDB**:
 	```
-	$ docker run -p 6060:6060 -d --name tinode-srv --network tinode-net tinode/tinode-rethinkdb:latest
+	$ docker run -p 80:6060 -d --name tinode-srv --network tinode-net tinode/tinode-rethinkdb:latest
 	```
 
 	2. **MySQL**:
 	```
-	$ docker run -p 6060:6060 -d --name tinode-srv --network tinode-net tinode/tinode-mysql:latest
+	$ docker run -p 80:6060 -d --name tinode-srv --network tinode-net tinode/tinode-mysql:latest
 	```
 
 	3. **MongoDB**:
 	```
-	$ docker run -p 6060:6060 -d --name tinode-srv --network tinode-net tinode/tinode-mongodb:latest
+	$ docker run -p 80:6060 -d --name tinode-srv --network tinode-net tinode/tinode-mongodb:latest
 	```
 
 	You can also run Tinode with the `tinode/tinode` image (which has all of the above DB adapters compiled in). You will need to specify the database adapter via `STORE_USE_ADAPTER` environment variable. E.g. for `mysql`, the command line will look like
